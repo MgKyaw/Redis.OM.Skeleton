@@ -35,4 +35,11 @@ public class PeopleController : ControllerBase
     {
         return _people.GeoFilter(x => x.Address!.Location, lon, lat, radius, Enum.Parse<GeoLocDistanceUnit>(unit)).ToList();
     }
+
+    [HttpGet("filterName")]
+    public IList<Person> FilterByName([FromQuery] string firstName, [FromQuery] string lastName)
+    {
+        return _people.Where(x => x.FirstName == firstName && x.LastName == lastName).ToList();
+    }
+
 }
