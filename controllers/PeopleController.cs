@@ -16,4 +16,11 @@ public class PeopleController : ControllerBase
         _provider = provider;
         _people = (RedisCollection<Person>)_provider.RedisCollection<Person>();
     }
+
+    [HttpPost]
+    public async Task<Person> AddPerson([FromBody] Person person)
+    {
+        await _people.InsertAsync(person);
+        return person;
+    }
 }
