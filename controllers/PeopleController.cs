@@ -78,4 +78,11 @@ public class PeopleController : ControllerBase
         return Accepted();
     }
 
+    [HttpDelete("{id}")]
+    public IActionResult DeletePerson([FromRoute] string id)
+    {
+        _provider.Connection.Unlink($"person:{id}");
+        return NoContent();
+    }
+
 }
