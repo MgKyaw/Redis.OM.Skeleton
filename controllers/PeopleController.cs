@@ -67,7 +67,7 @@ public class PeopleController : ControllerBase
     }
 
     [HttpPatch("updateAge/{id}")]
-    public IActionResult UpdateAge([FromQuery] string id, [FromBody] int newAge)
+    public IActionResult UpdateAge([FromRoute] string id, [FromBody] int newAge)
     {
         foreach(var person in _people.Where(x => x.Id == id).ToList())
         {
