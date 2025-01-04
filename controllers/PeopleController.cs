@@ -48,4 +48,10 @@ public class PeopleController : ControllerBase
         return _people.Where(x => x.Address!.PostalCode == postalCode).ToList();
     }
 
+    [HttpGet("fullText")]
+    public IList<Person> FilterByPersonalStatement([FromQuery] string text)
+    {
+        return _people.Where(x => x.PersonalStatement == text).ToList();
+    }
+
 }
