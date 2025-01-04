@@ -54,4 +54,10 @@ public class PeopleController : ControllerBase
         return _people.Where(x => x.PersonalStatement == text).ToList();
     }
 
+    [HttpGet("streetName")]
+    public IList<Person> FilterByStreetName([FromQuery] string streetName)
+    {
+        return _people.Where(x => x.Address!.StreetName == streetName).ToList();
+    }
+
 }
