@@ -66,4 +66,16 @@ public class PeopleController : ControllerBase
         return _people.Where(x => x.Skills.Contains(skill)).ToList();
     }
 
+    [HttpPatch("updateAge/{id}")]
+    public IActionResult UpdateAge([FromQuery] string id, [FromBody] int newAge)
+    {
+        foreach(var person in _people.Where(x => x.Id == id).ToList())
+        {
+            person.Age = newAge;
+        }
+
+        _people.Save();
+        return Accepted();
+    }
+
 }
