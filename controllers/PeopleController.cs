@@ -60,4 +60,10 @@ public class PeopleController : ControllerBase
         return _people.Where(x => x.Address!.StreetName == streetName).ToList();
     }
 
+    [HttpGet("skill")]
+    public IList<Person> FilterBySkill([FromQuery] string skill)
+    {
+        return _people.Where(x => x.Skills.Contains(skill)).ToList();
+    }
+
 }
