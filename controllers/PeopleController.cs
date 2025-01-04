@@ -29,4 +29,10 @@ public class PeopleController : ControllerBase
     {
         return _people.Where(x => x.Age >= minAge && x.Age <= maxAge).ToList();
     }
+
+    [HttpGet("filterGeo")]
+    public IList<Person> FilterByGeo([FromQuery] double lon, [FromQuery] double lat, [FromQuery] double radius, [FromQuery] string unit)
+    {
+        return _people.GeoFilter(x => x.Address!.Location, lon, lat, radius, Enum.Parse<GeoLocDistanceUnit>(unit)).ToList();
+    }
 }
