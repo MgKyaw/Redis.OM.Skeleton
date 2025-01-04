@@ -42,4 +42,10 @@ public class PeopleController : ControllerBase
         return _people.Where(x => x.FirstName == firstName && x.LastName == lastName).ToList();
     }
 
+    [HttpGet("filterPostalCode")]
+    public IList<Person> FilterByPostalCode([FromQuery] string postalCode)
+    {
+        return _people.Where(x => x.Address!.PostalCode == postalCode).ToList();
+    }
+
 }
