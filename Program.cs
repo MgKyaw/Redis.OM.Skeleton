@@ -1,3 +1,4 @@
+using Redis.OM;
 using Redis.OM.Skeleton.HostedServices;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddOpenApi();
 
 builder.Services.AddHostedService<IndexCreationService>();
+builder.Services.AddSingleton(new RedisConnectionProvider(
+    builder.Configuration["REDIS_CONNECTION_STRING"]
+));
 
 var app = builder.Build();
 
