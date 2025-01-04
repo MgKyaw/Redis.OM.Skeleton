@@ -23,4 +23,10 @@ public class PeopleController : ControllerBase
         await _people.InsertAsync(person);
         return person;
     }
+
+    [HttpGet("filterAge")]
+    public IList<Person> FilterByAge([FromQuery] int minAge, [FromQuery] int maxAge)
+    {
+        return _people.Where(x => x.Age >= minAge && x.Age <= maxAge).ToList();
+    }
 }
