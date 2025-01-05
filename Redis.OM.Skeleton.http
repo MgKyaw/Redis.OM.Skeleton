@@ -4,3 +4,68 @@ GET {{Redis.OM.Skeleton_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
+
+### Create a new item
+POST {{Redis.OM.Skeleton_HostAddress}}/people
+Content-Type: application/json
+Accept: application/json
+
+{
+  "firstname": "a",
+  "lastname": "b",
+  "age": 10,
+  "skills": ["C#"]
+}
+
+###
+
+GET {{Redis.OM.Skeleton_HostAddress}}/people/filterage?minAge=0&maxAge=100
+Accept: application/json
+
+###
+
+GET {{Redis.OM.Skeleton_HostAddress}}/people/filtergeo?lon=0.0001&lat=100&radius=1&unit=Kilometers
+Accept: application/json
+
+###
+
+GET {{Redis.OM.Skeleton_HostAddress}}/people/filtername?firstName=a&lastName=b
+Accept: application/json
+
+###
+
+GET {{Redis.OM.Skeleton_HostAddress}}/people/filterpostalcode?postalcode=0
+Accept: application/json
+
+###
+
+GET {{Redis.OM.Skeleton_HostAddress}}/people/fulltext?text=a
+Accept: application/json
+
+###
+
+GET {{Redis.OM.Skeleton_HostAddress}}/people/streetname?streetname=a
+Accept: application/json
+
+###
+
+GET {{Redis.OM.Skeleton_HostAddress}}/people/skill?skill=a
+Accept: application/json
+
+###
+
+### Partially update an item
+PATCH {{Redis.OM.Skeleton_HostAddress}}/people/updateAge/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "newAge": 21
+}
+
+###
+
+### Delete an item
+DELETE {{Redis.OM.Skeleton_HostAddress}}/people/1
+Accept: application/json
+
